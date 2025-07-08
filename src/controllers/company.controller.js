@@ -76,7 +76,8 @@ export const getCompanyById = async (req,res)=>{
             })
         }
         return res.status(400).json({
-            success: false
+            success: false,
+            message: ""
         })
     }catch(error){
         console.log(error.message)

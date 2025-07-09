@@ -26,7 +26,7 @@ export const createCompany = async (req, res) => {
             faceBook
         })
         return res.status(200).json({
-            success: false,
+            success: true,
             message: "Thêm công ty thành công",
             data: createCompany
         })
@@ -40,10 +40,10 @@ export const createCompany = async (req, res) => {
 }
 
 // Get All
-export const getAllCompany = async (req,res) =>{
-    try{
+export const getAllCompany = async (req, res) => {
+    try {
         const listCompany = await Company.find()
-        if(listCompany){
+        if (listCompany) {
             return res.status(200).json({
                 success: true,
                 message: "Lấy danh sách thành công",
@@ -54,7 +54,7 @@ export const getAllCompany = async (req,res) =>{
             success: false,
             message: "Lấy danh sách thất bại"
         })
-    }catch(error){
+    } catch (error) {
         console.log(error.message)
         return res.status(500).json({
             success: false,
@@ -64,11 +64,11 @@ export const getAllCompany = async (req,res) =>{
 }
 
 // Get by Id
-export const getCompanyById = async (req,res)=>{
-    try{
-        const {company_id} = req.params
+export const getCompanyById = async (req, res) => {
+    try {
+        const { company_id } = req.params
         const findCompany = await Company.findById(company_id)
-        if(findCompany){
+        if (findCompany) {
             return res.status(200).json({
                 success: true,
                 message: "Lấy Công ty thành công",
@@ -77,8 +77,65 @@ export const getCompanyById = async (req,res)=>{
         }
         return res.status(400).json({
             success: false,
-            message: ""
+            message: "Không thể lấy Company"
         })
+    } catch (error) {
+        console.log(error.message)
+        return res.status(500).json({
+            success: false,
+            message: "Lỗi không xác định ở Server"
+        })
+    }
+}
+
+// Update Company
+export const updateCompany = async () => {
+    try {
+        const { company_id } = req.params
+        const { name,
+            slug,
+            managerName,
+            managerPhone,
+            webCompaney,
+            faceBook
+        } = req.body
+        const updateCompany = await Company.findByIdAndUpdate(company_id,{ name,
+            slug,
+            managerName,
+            managerPhone,
+            webCompaney,
+            faceBook}, {new: true})
+        if (updateCompany){
+            return res.status(200).json({
+                success: true,
+                message: `Ca65p nhật công ty ${updateCompany.name} thành công`,
+                data: updateCompany
+            })
+        }
+        return res.status(400).json({
+            success: false,
+            message: ` Cập nhật công ty ${name} thất bại `
+        })
+    } catch (error) {
+        console.log(error.message)
+        return res.status(500).json({
+            success: false,
+            message: "Lỗi không xác định ở Server"
+        })
+    }
+}
+
+// Delete 
+export const deleteCompany = async (req,res) =>{
+    try{
+        const {company_id} = req.params
+        const deleteCompany = await Company.findByIdAndDelete(company_id)
+        if(deleteCompany){
+            return res.status(200).json({
+                success: true,
+                message: `Xóa công ty ${deleteCompany.name} thành công`
+            })
+        }
     }catch(error){
         console.log(error.message)
         return res.status(500).json({

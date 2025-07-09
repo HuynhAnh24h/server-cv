@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const skillSchema = new mongoose.Schema({
     name:{
         type: String,
-        require: true
+        required: true
     },
     image:{
         type: String

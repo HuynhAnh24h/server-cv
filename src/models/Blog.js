@@ -3,15 +3,15 @@ import mongoose from "mongoose"
 const blogSchema = new mongoose.Schema({
     title: {
         type: String,
-        require: true
+        required: true
     },
     slug:{
         type: String,
-        require: true
+        required: true
     },
     blogDesc:{
         type: String,
-        require: true
+        required: true
     },
     blogThumbnail:{
         type: String

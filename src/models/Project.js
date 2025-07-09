@@ -3,15 +3,15 @@ import mongoose from "mongoose"
 const projectSchema = new mongoose.Schema({
     name: {
         type: String,
-        require: true
+        required: true
     },
     projectDesc:{
         type: String,
-        require: true
+        required: true
     },
     projectLink:{
         type: String,
-        require: true
+        required: true
     },
     role:{
         type: String,

@@ -2,12 +2,12 @@ import mongoose from "mongoose"
 
 const categoryBlogSchema = new mongoose.Schema({
     name:{
-        tytpe: String,
-        require: true
+        type: String,
+        required: true
     },
     slug:{
         type: String,
-        require: true
+        required: true
     },
     image:{
         type: String

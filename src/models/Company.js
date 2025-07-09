@@ -3,11 +3,11 @@ import mongoose, { Mongoose } from "mongoose"
 const companyShcema = new mongoose.Schema({
     name:{
         type: String,
-        require: true
+        required: true
     },
     slug:{
         type: String,
-        require: true
+        required: true
     },
     image:{
         type: String

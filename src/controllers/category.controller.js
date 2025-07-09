@@ -30,7 +30,7 @@ export const createCteBlog = async (req, res) => {
 };
 
 // Get By ID
-export const getCategoryBlogById = async (req, res) => {
+export const getCteBlogById = async (req, res) => {
     try {
         const { cte_blog_id } = req.params;
         const categoryBlog = await CategoryBlog.findById(cte_blog_id);
@@ -54,7 +54,7 @@ export const getCategoryBlogById = async (req, res) => {
 };
 
 // Get All
-export const getAllCategoryBlog = async (req, res) => {
+export const getAllCteBlog = async (req, res) => {
     try {
         const listCategoryBlog = await CategoryBlog.find();
         return res.status(200).json({
@@ -71,7 +71,7 @@ export const getAllCategoryBlog = async (req, res) => {
 };
 
 // Update
-export const updateCategoryBlog = async (req, res) => {
+export const updateCteBlog = async (req, res) => {
     try {
         const { name, slug, image } = req.body;
         const { cte_blog_id } = req.params;
@@ -101,7 +101,7 @@ export const updateCategoryBlog = async (req, res) => {
 };
 
 // Delete
-export const deleteCategoryBlog = async (req, res) => {
+export const deleteCteBlog = async (req, res) => {
     try {
         const { cte_blog_id } = req.params;
         const deletedCategory = await CategoryBlog.findByIdAndDelete(cte_blog_id);
@@ -128,7 +128,7 @@ export const deleteCategoryBlog = async (req, res) => {
 // === CONTROLLER CATEGORY PROJECT ===
 
 // Create
-export const createCategoryProject = async (req, res) => {
+export const createCteProject = async (req, res) => {
     try {
         const { name, slug } = req.body;
         const existed = await CategoryProject.findOne({ name });

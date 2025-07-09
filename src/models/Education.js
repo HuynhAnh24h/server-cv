@@ -3,22 +3,22 @@ import mongoose from "mongoose"
 const educationSchema = new mongoose.Schema({
     name: {
         type: String,
-        require: true
+        required: true
     },
     slug:{
         type: String,
-        require: true
+        required: true
     },
     image:{
         type: String,
     },
     eduDesc: {
         type: String,
-        require: true
+        required: true
     },
     eduLink:{
         type:String,
-        require: true
+        required: true
     },
     credential:{
         type:[String]

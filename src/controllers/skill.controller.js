@@ -10,10 +10,11 @@ export const createSkill = async (req,res) =>{
                 message: "Skill đã tồn tại"
             })
         }
+        const newSkill = await Skill.create({name,slug,skillProgressBar})
         return res.status(200).json({
             success: true,
             message: "Tạo kỹ năng thành công",
-            data: exitsted
+            data: newSkill
         })
     }catch(error){
         return res.status(500).json({
@@ -93,7 +94,20 @@ export const updateSkill = async (req,res) =>{
 
 export const deleteSkill = async (req,res)=>{
     try{
-
+        const {skill_id} = req.params
+        const deleteSkill = await Skill.findByIdAndDelete(skill_id)
+        if(deleteSkill){
+            return res.status(200).json({
+                success: true,
+                message: `Xóa ${deleteSkill.name} thành công`,
+                data: deleteSkill
+            })
+        }
+        return res.status(500).json({
+            success: false,
+            message: "Không thể xóa skill",
+            id: skill_id
+        })
     }catch(error){
         console.log("Log Error:",error.message)
         return res.status(5000).json({

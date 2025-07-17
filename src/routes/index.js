@@ -5,6 +5,7 @@ import educationRoute from "./education.route.js"
 import categoryBlogRoute from "./category.blog.route.js"
 import categoryProjectRoute from "./category.project.route.js"
 
+
 const AppRouters = (app) =>{
     app.use("/api/user", userRouter)
     app.use("/api/skill", skillRouter)
